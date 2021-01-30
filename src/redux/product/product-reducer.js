@@ -1,15 +1,26 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
+import { loadMore, addToOrder, deleteOrder } from './product-action';
+import createProducts from '../../service/createItems';
 
-import { addProduct, deleteProduct } from './contacts-actions';
+const initialState = [];
 
-const productReducer = createReducer([], {
-  [addProduct]: (state, { payload }) => [...state, payload],
-  [deleteProduct]: (state, { payload }) =>
-    state.filter(contact => {
-      return contact.id !== payload;
-    }),
+console.log(createProducts());
+
+const productReducer = createReducer(initialState, {
+  [loadMore]: (state, { payload }) => [...state, ...payload],
+
+  // [deleteProduct]: (state, { payload }) =>
+  //   state.filter(contact => {
+  //     return contact.id !== payload;
+  //   }),
+});
+const orderReducer = createReducer([], {
+  [addToOrder]: (state, { payload }) => [...state, payload],
+  [deleteOrder]: (state, { payload }) =>
+    state.filter(item => item.id !== payload),
 });
 
 export default combineReducers({
-  contacts: productReducer,
+  products: productReducer,
+  orders: orderReducer,
 });
