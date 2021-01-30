@@ -4,48 +4,33 @@ import s from './ProductList.module.css';
 import { loadMore, addToOrder } from '../../redux/product/product-action';
 import createItems from '../../service/createItems';
 import localizePrice from '../../service/toLocale';
+import { getProducts } from '../../redux/product/product-selectors';
 
 export default function ProductList() {
-  const products = useSelector(state => state.products);
+  const products = useSelector(getProducts);
   const dispatch = useDispatch();
 
-  const moreProducts = createItems();
+  const markup = [];
+  products.forEach((product, again, set) => {
+    markup.push(set[product]);
+  });
 
   return (
     <section>
       <ul className={s.list}>
-        {products.map(product => (
+        {markup.map(product => (
           <li key={product.id} className={s.item}>
-            <Link
-              to="/cart"
-              id={product.id}
-              onClick={e => console.log(e.currentTarget.id)}
-            >
-              <div>
-                <div
-                  className={s.color}
-                  style={{
-                    backgroundColor: `${product.color}`,
-                  }}
-                >
-                  <div className={s.price}>{localizePrice(product.price)}</div>
-                </div>
-              </div>
-            </Link>
-            <button
-              type="button"
-              className={s.button}
-              onClick={() => dispatch(addToOrder(product))}
-            >
-              add to cart
-            </button>
+            <div
+              className={s.color}
+              style={{ backgroundColor: `${product.color}` }}
+            ></div>
           </li>
         ))}
       </ul>
       <div className={s.buttonWrap}>
-        <button type="button" onClick={() => dispatch(loadMore(moreProducts))}>
+        {/* <button type="button" onClick={() => dispatch(loadMore(moreProducts))}>
           load more
-        </button>
+        </button> */}
       </div>
     </section>
   );

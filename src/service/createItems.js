@@ -11,25 +11,13 @@ function generatePrice() {
 }
 
 export default function createProducts() {
-  const products = new Set();
-  do {
-    const color = generateColor();
+  let products = new Set();
 
-    products[color] = {
-      color: color,
-      price: generatePrice(),
-    };
-  } while (products.length <= 5);
+  do {
+    let id = generateColor();
+    products.add(id);
+    products[id] = { color: id, price: generatePrice(), id };
+  } while (products.size < 5);
 
   return products;
 }
-
-// export default function createItems() {
-//   return [
-//     { color: generateColor(), price: generatePrice(), id: uuidv4(), amount: 1 },
-//     { color: generateColor(), price: generatePrice(), id: uuidv4(), amount: 1 },
-//     { color: generateColor(), price: generatePrice(), id: uuidv4(), amount: 1 },
-//     { color: generateColor(), price: generatePrice(), id: uuidv4(), amount: 1 },
-//     { color: generateColor(), price: generatePrice(), id: uuidv4(), amount: 1 },
-//   ];
-// }

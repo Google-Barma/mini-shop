@@ -2,9 +2,7 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import { loadMore, addToOrder, deleteOrder } from './product-action';
 import createProducts from '../../service/createItems';
 
-const initialState = [];
-
-console.log(createProducts());
+const initialState = createProducts();
 
 const productReducer = createReducer(initialState, {
   [loadMore]: (state, { payload }) => [...state, ...payload],
