@@ -6,11 +6,6 @@ const initialState = createProducts();
 
 const productReducer = createReducer(initialState, {
   [loadMore]: (state, { payload }) => [...state, ...payload],
-
-  // [deleteProduct]: (state, { payload }) =>
-  //   state.filter(contact => {
-  //     return contact.id !== payload;
-  //   }),
 });
 const orderReducer = createReducer([], {
   [addToOrder]: (state, { payload }) => [...state, payload],

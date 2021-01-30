@@ -24,6 +24,16 @@ export default function ProductList() {
               className={s.color}
               style={{ backgroundColor: `${product.color}` }}
             ></div>
+            <div className={s.price}>
+              <span>{localizePrice(product.price)}</span>
+            </div>
+            <button
+              type="button"
+              className="button"
+              onClick={() => dispatch(addToOrder(product))}
+            >
+              add to card
+            </button>
           </li>
         ))}
       </ul>
