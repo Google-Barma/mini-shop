@@ -5,12 +5,11 @@ import createProducts from '../../service/createItems';
 const initialState = createProducts();
 
 const productReducer = createReducer(initialState, {
-  [loadMore]: (state, { payload }) => [...state, ...payload],
+  [loadMore]: (state, { payload }) => [...state, payload],
 });
+
 const orderReducer = createReducer([], {
   [addToOrder]: (state, { payload }) => [...state, payload],
-  [deleteOrder]: (state, { payload }) =>
-    state.filter(item => item.id !== payload),
 });
 
 export default combineReducers({

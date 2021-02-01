@@ -21,5 +21,10 @@ export default function createProducts() {
     products[id] = { color: id, price: generatePrice(), id };
   } while (products.size < 5);
 
+  // const productArray = [];
+  // products.forEach((product, again, set) => {
+  //   productArray.push(set[product]);
+  // });
+
   return products;
 }
