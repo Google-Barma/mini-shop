@@ -1,6 +1,6 @@
 export default function localizePrice(price) {
-  return price.toLocaleString('ru-RU', {
+  return price.toLocaleString('en-US', {
     style: 'currency',
-    currency: 'UAH',
+    currency: 'USD',
   });
 }

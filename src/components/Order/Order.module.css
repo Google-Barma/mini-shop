@@ -1,0 +1,21 @@
+.orderWrap {
+  position: absolute;
+  width: 350px;
+  top: 100px;
+  right: 15px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.controls {
+  display: flex;
+  justify-content: space-around;
+}
+.button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}

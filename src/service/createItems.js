@@ -30,10 +30,9 @@ export default function createProducts() {
     };
   } while (products.size < 5);
 
-  const productArray = [];
-  products.forEach((product, again, set) => {
-    productArray.push(set[product]);
-  });
+  const productsArray = [];
+  products.forEach((product, a, set) => productsArray.push(set[product]));
 
-  return productArray;
+  return productsArray;
+  // return products;
 }

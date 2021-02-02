@@ -11,6 +11,10 @@ export default function ProductList() {
   const dispatch = useDispatch();
   const moreProducts = createItems();
 
+  // const markup = [];
+  // products.forEach((item, itemAgain, set) => markup.push(set[item]));
+  // console.log(markup);
+
   return (
     <section>
       <ul className={s.list}>

@@ -1,11 +1,11 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import { loadMore, addOrder, deleteOrder } from './product-action';
+import { loadMore, addOrder, deleteOrder, isOpenOrder } from './product-action';
 import createProducts from '../../service/createItems';
 
 const initialState = createProducts();
 
 const productReducer = createReducer(initialState, {
-  [loadMore]: (state, { payload }) => [...state, payload],
+  [loadMore]: (state, { payload }) => [...state, ...payload],
 });
 
 const orderReducer = createReducer([], {
@@ -14,7 +14,14 @@ const orderReducer = createReducer([], {
     state.filter(item => item.id !== payload),
 });
 
+const isOpenReducer = createReducer(false, {
+  [isOpenOrder]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   products: productReducer,
-  orders: orderReducer,
+  orderList: combineReducers({
+    orders: orderReducer,
+    isOpen: isOpenReducer,
+  }),
 });
