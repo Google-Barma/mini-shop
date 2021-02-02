@@ -6,9 +6,11 @@
 }
 .prodWrap {
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  max-width: 600px;
 }
 .price {
   display: block;
+}
+.numberInput {
+  width: 30px;
 }

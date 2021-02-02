@@ -18,7 +18,13 @@ export default function createProducts() {
   do {
     let id = generateColor();
     products.add(id);
-    products[id] = { color: id, price: generatePrice(), id, amount: 1 };
+    products[id] = {
+      color: id,
+      price: generatePrice(),
+      id,
+      amount: 1,
+      smth: 0,
+    };
   } while (products.size < 5);
 
   const productArray = [];

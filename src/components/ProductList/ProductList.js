@@ -9,6 +9,7 @@ import { getProducts } from '../../redux/product/product-selectors';
 export default function ProductList() {
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
+  console.log(products);
 
   // const markup = [];
   // products.forEach((product, again, set) => {
