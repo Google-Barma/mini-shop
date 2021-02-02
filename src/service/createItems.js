@@ -18,13 +18,13 @@ export default function createProducts() {
   do {
     let id = generateColor();
     products.add(id);
-    products[id] = { color: id, price: generatePrice(), id };
+    products[id] = { color: id, price: generatePrice(), id, amount: 1 };
   } while (products.size < 5);
 
-  // const productArray = [];
-  // products.forEach((product, again, set) => {
-  //   productArray.push(set[product]);
-  // });
+  const productArray = [];
+  products.forEach((product, again, set) => {
+    productArray.push(set[product]);
+  });
 
-  return products;
+  return productArray;
 }

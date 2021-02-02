@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import s from './ProductList.module.css';
-import { loadMore, addToOrder } from '../../redux/product/product-action';
+import { loadMore, addOrder } from '../../redux/product/product-action';
 import createItems from '../../service/createItems';
 import localizePrice from '../../service/toLocale';
 import { getProducts } from '../../redux/product/product-selectors';
@@ -10,27 +10,29 @@ export default function ProductList() {
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
 
-  const markup = [];
-  products.forEach((product, again, set) => {
-    markup.push(set[product]);
-  });
+  // const markup = [];
+  // products.forEach((product, again, set) => {
+  //   markup.push(set[product]);
+  // });
 
   return (
     <section>
       <ul className={s.list}>
-        {markup.map(product => (
+        {products.map(product => (
           <li key={product.id} className={s.item}>
-            <div
-              className={s.color}
-              style={{ backgroundColor: `${product.color}` }}
-            ></div>
-            <div className={s.price}>
-              <span>{localizePrice(product.price)}</span>
-            </div>
+            <Link to={`/card${product.id}`}>
+              <div
+                className={s.color}
+                style={{ backgroundColor: `${product.color}` }}
+              ></div>
+              <div className={s.price}>
+                <span>{localizePrice(product.price)}</span>
+              </div>
+            </Link>
             <button
               type="button"
               className="button"
-              onClick={() => dispatch(addToOrder(product))}
+              onClick={() => dispatch(addOrder(product))}
             >
               add to card
             </button>

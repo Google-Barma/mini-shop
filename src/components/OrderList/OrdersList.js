@@ -15,8 +15,8 @@ export default function OrderList() {
               className={s.color}
               style={{ backgroundColor: `${color}` }}
             ></div>
-            <span>price: {price}</span>
-            <span>amoun: {amount}</span>
+            <span className={s.price}>price: {price}</span>
+            <span className={s.amount}>amoun: {amount}</span>
             <button type="button" onClick={() => dispatch(deleteOrder(id))}>
               delete
             </button>

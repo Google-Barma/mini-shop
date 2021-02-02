@@ -9,5 +9,21 @@
 .list {
   position: absolute;
   right: 0;
-  background-color: rgb(109, 109, 109);
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.item {
+  margin-bottom: 10px;
+}
+.price {
+  display: block;
+}
+.amount {
+  display: block;
 }

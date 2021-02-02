@@ -5,12 +5,11 @@ import s from './NavBar.module.css';
 
 export default function NavMenu() {
   const orders = useSelector(state => state.orders);
-  console.log(orders);
 
   const total = orders =>
     orders.reduce((total, order) => total + order.price, 0);
 
-  // const totalPrice = total(orders);
+  const totalPrice = total(orders);
 
   return (
     <>
@@ -19,11 +18,11 @@ export default function NavMenu() {
         <Link to="/" className={s.link}>
           Home
         </Link>
+        <div>
+          <h2>{localizePrice(totalPrice)} </h2>
+          <ul className={s.cartList}></ul>
+        </div>
       </nav>
-      <div>
-        {/* <h2>{localizePrice(totalPrice)} </h2> */}
-        <ul className={s.cartList}></ul>
-      </div>
     </>
   );
 }

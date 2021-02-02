@@ -1,5 +1,5 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import { loadMore, addToOrder, deleteOrder } from './product-action';
+import { loadMore, addOrder, deleteOrder } from './product-action';
 import createProducts from '../../service/createItems';
 
 const initialState = createProducts();
@@ -9,7 +9,9 @@ const productReducer = createReducer(initialState, {
 });
 
 const orderReducer = createReducer([], {
-  [addToOrder]: (state, { payload }) => [...state, payload],
+  [addOrder]: (state, { payload }) => [...state, payload],
+  [deleteOrder]: (state, { payload }) =>
+    state.filter(item => item.id !== payload),
 });
 
 export default combineReducers({

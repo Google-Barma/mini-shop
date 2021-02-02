@@ -2,6 +2,6 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const loadMore = createAction('product/loadMore');
 
-export const addToOrder = createAction('product/addToOrder');
+export const addOrder = createAction('product/addOrder');
 
-export const deleteOrder = createAction('product/deleteToOrder');
+export const deleteOrder = createAction('product/deleteOrder');
