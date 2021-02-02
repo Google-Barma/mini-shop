@@ -9,7 +9,10 @@ function generateColor() {
 }
 
 function generatePrice() {
-  return Math.round(Math.random() * 50);
+  const price = Math.round(Math.random() * 50);
+  if (price < 1) return 1;
+
+  return price;
 }
 
 export default function createProducts() {

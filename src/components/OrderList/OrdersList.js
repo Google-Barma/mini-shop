@@ -9,7 +9,7 @@ export default function OrderList() {
   return (
     <div className={s.listWrap}>
       <ul className={s.list}>
-        {orders.map(({ color, price, amount, id }) => (
+        {orders.map(({ color, price, amount, id, smth }) => (
           <li key={id} className={s.item}>
             <div
               className={s.color}
@@ -17,12 +17,16 @@ export default function OrderList() {
             ></div>
             <span className={s.price}>price: {price}</span>
             <span className={s.amount}>amoun: {amount}</span>
+            <span className={s.smth}>smth: {smth}</span>
             <button type="button" onClick={() => dispatch(deleteOrder(id))}>
               delete
             </button>
           </li>
         ))}
       </ul>
+      <button type="button" className={s.button}>
+        Go to checkout
+      </button>
     </div>
   );
 }

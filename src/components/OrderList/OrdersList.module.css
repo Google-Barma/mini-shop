@@ -4,11 +4,12 @@
   border-radius: 50%;
 }
 .listWrap {
-  position: relative;
+  position: absolute;
+  width: 300px;
+  top: 100px;
+  right: 15px;
 }
 .list {
-  position: absolute;
-  right: 0;
   background-color: rgb(255, 255, 255);
   padding: 15px;
   list-style: none;
@@ -25,5 +26,8 @@
   display: block;
 }
 .amount {
+  display: block;
+}
+.smth {
   display: block;
 }

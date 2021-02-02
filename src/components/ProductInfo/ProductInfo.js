@@ -2,23 +2,15 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addOrder } from '../../redux/product/product-action';
 import s from './ProductInfo.module.css';
+import toLocale from '../../service/toLocale';
 
 export default function ProductInfo({ product }) {
   const [amountValue, setAmountValue] = useState(1);
   const [smthValue, setSmthValue] = useState(0);
   const dispatch = useDispatch();
-
-  const handleAddToCard = product => {
-    product.amount = amountValue;
-    product.smth = Number(smthValue);
-    // dispatch(addOrder(product));
-    // console.log(product);
-    return product;
-  };
-  console.log(product);
-
-  const order = handleAddToCard(product);
-  console.log(order);
+  let { color, price, amount, smth, id } = product;
+  amount = amountValue;
+  smth = smthValue;
 
   return (
     <>
@@ -37,10 +29,10 @@ export default function ProductInfo({ product }) {
             id="toppings"
             onChange={({ target: { value } }) => setSmthValue(value)}
           >
-            <option>select smth</option>
-            <option value="10">smth $10</option>
-            <option value="20">smth $20</option>
-            <option value="30">smth $30</option>
+            <option value="0">please select</option>
+            <option value="10">smth {toLocale(10)}</option>
+            <option value="20">smth {toLocale(20)}</option>
+            <option value="30">smth {toLocale(30)}</option>
           </select>
           <button
             type="button"
@@ -61,7 +53,10 @@ export default function ProductInfo({ product }) {
             +
           </button>
         </form>
-        <button type="button" onClick={() => dispatch(addOrder(product))}>
+        <button
+          type="button"
+          onClick={() => dispatch(addOrder({ color, price, amount, smth, id }))}
+        >
           add to cart
         </button>
       </div>
