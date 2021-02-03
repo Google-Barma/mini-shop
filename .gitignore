@@ -27,3 +27,5 @@ firebaseConfig.js
 
 .eslintcache
 .eslintcache*
+
+/functions/config.js

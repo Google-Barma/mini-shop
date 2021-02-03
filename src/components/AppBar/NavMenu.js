@@ -8,7 +8,6 @@ import { isOpenOrder } from '../../redux/product/product-action';
 export default function NavMenu({ authentication, logIn, logOut }) {
   const orders = useSelector(getOrders);
   const dispatch = useDispatch();
-  console.log(authentication);
 
   const total = orders =>
     orders.reduce((total, order) => total + order.price, 0);
