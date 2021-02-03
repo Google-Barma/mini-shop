@@ -5,9 +5,10 @@ import s from './NavBar.module.css';
 import { getOrders } from '../../redux/product/product-selectors';
 import { isOpenOrder } from '../../redux/product/product-action';
 
-export default function NavMenu() {
+export default function NavMenu({ authentication, logIn, logOut }) {
   const orders = useSelector(getOrders);
   const dispatch = useDispatch();
+  console.log(authentication);
 
   const total = orders =>
     orders.reduce((total, order) => total + order.price, 0);
@@ -27,6 +28,20 @@ export default function NavMenu() {
           </h2>
           <ul className={s.cartList}></ul>
         </div>
+        {authentication ? (
+          <div>
+            <span>{authentication.displayName}</span>
+            <button className="button" type="button" onClick={logOut}>
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button className="button" type="button" onClick={logIn}>
+              logIn
+            </button>
+          </div>
+        )}
       </nav>
     </>
   );

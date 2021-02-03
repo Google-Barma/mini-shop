@@ -10,6 +10,7 @@ const productReducer = createReducer(initialState, {
 
 const orderReducer = createReducer([], {
   [addOrder]: (state, { payload }) => [...state, payload],
+
   [deleteOrder]: (state, { payload }) =>
     state.filter(item => item.id !== payload),
 });
