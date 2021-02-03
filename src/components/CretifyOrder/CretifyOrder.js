@@ -29,6 +29,7 @@ export default function CretifyOrder({ onOpenModal }) {
     <div className={s.orderWrap}>
       <OrderList />
       <button
+        className="button"
         type="button"
         onClick={() =>
           authentication

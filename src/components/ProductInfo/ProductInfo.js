@@ -54,6 +54,7 @@ export default function ProductInfo({ product }) {
           </button>
         </form>
         <button
+          className="button"
           type="button"
           onClick={() => dispatch(addOrder({ color, price, amount, smth, id }))}
         >

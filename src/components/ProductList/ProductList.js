@@ -40,7 +40,11 @@ export default function ProductList() {
         ))}
       </ul>
       <div className={s.buttonWrap}>
-        <button type="button" onClick={() => dispatch(loadMore(moreProducts))}>
+        <button
+          className="button"
+          type="button"
+          onClick={() => dispatch(loadMore(moreProducts))}
+        >
           load more
         </button>
       </div>

@@ -5,7 +5,11 @@ export default function OrderSuccessModal({ onOpenModal }) {
     <div className={s.overlay}>
       <div className={s.modal}>
         <h2>Order success!</h2>
-        <button type="button" onClick={() => onOpenModal(false)}>
+        <button
+          className="button"
+          type="button"
+          onClick={() => onOpenModal(false)}
+        >
           close
         </button>
       </div>
