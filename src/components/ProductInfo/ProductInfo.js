@@ -21,7 +21,7 @@ export default function ProductInfo({ product }) {
         ></div>
 
         <span className={s.price}>
-          Price: {product.price * amountValue + Number(smthValue)}
+          Price: {toLocale(product.price * amountValue + Number(smthValue))}
         </span>
         <form>
           <select
