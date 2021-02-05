@@ -11,7 +11,7 @@ import createProducts from '../../service/createItems';
 const initialState = createProducts();
 
 const productReducer = createReducer(initialState, {
-  [loadMore]: (state, { payload }) => [...state, ...payload],
+  [loadMore]: (state, { payload }) => createProducts(payload),
 });
 
 const orderReducer = createReducer([], {

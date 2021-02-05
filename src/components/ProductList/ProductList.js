@@ -9,7 +9,8 @@ import { getProducts } from '../../redux/product/product-selectors';
 export default function ProductList() {
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
-  const moreProducts = createItems();
+  console.log(products);
+  // const moreProducts = createItems();
 
   // const markup = [];
   // products.forEach((item, itemAgain, set) => markup.push(set[item]));
@@ -43,7 +44,7 @@ export default function ProductList() {
         <button
           className="button"
           type="button"
-          onClick={() => dispatch(loadMore(moreProducts))}
+          onClick={() => dispatch(loadMore(products))}
         >
           load more
         </button>

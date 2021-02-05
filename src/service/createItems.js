@@ -15,24 +15,44 @@ function generatePrice() {
   return price;
 }
 
-export default function createProducts() {
+function generateSet(item) {
+  let id = generateColor();
+  item.add(id);
+  item[id] = {
+    color: id,
+    price: generatePrice(),
+    id,
+    amount: 1,
+    smth: 0,
+  };
+}
+
+export default function createProducts(state = []) {
   let products = new Set();
-
-  do {
-    let id = generateColor();
-    products.add(id);
-    products[id] = {
-      color: id,
-      price: generatePrice(),
-      id,
-      amount: 1,
-      smth: 0,
-    };
-  } while (products.size < 5);
-
+  let convertObj = new Set();
   const productsArray = [];
-  products.forEach((product, a, set) => productsArray.push(set[product]));
 
-  return productsArray;
-  // return products;
+  if (state.length === 0) {
+    do {
+      generateSet(products);
+    } while (products.size < 5);
+
+    products.forEach((product, a, set) => productsArray.push(set[product]));
+
+    return productsArray;
+  }
+
+  if (state.length > 0) {
+    state.map(product => {
+      convertObj.add(product.id);
+      convertObj[product.id] = product;
+    });
+    do {
+      generateSet(convertObj);
+    } while (convertObj.size < state.length + 5);
+
+    convertObj.forEach((product, a, set) => productsArray.push(set[product]));
+
+    return productsArray;
+  }
 }
