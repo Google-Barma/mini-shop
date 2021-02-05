@@ -38,7 +38,6 @@ export default function createProducts(state = []) {
     } while (products.size < 5);
 
     products.forEach((product, a, set) => productsArray.push(set[product]));
-
     return productsArray;
   }
 
@@ -46,13 +45,14 @@ export default function createProducts(state = []) {
     state.map(product => {
       convertObj.add(product.id);
       convertObj[product.id] = product;
+      return null;
     });
+
     do {
       generateSet(convertObj);
     } while (convertObj.size < state.length + 5);
 
     convertObj.forEach((product, a, set) => productsArray.push(set[product]));
-
     return productsArray;
   }
 }

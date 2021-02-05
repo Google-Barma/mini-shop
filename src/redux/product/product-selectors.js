@@ -14,7 +14,7 @@ export const getTotalAmount = createSelector([getOrders], orders =>
 
 export const getTotalPrice = createSelector([getOrders], orders =>
   orders.reduce(
-    (total, order) => total + order.price * order.amount + Number(order.smth),
+    (total, order) => total + order.amount * (Number(order.smth) + order.price),
     0,
   ),
 );

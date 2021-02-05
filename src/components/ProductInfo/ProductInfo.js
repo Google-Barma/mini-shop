@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addOrder } from '../../redux/product/product-action';
+import { addExtendedOrder, addOrder } from '../../redux/product/product-action';
 import s from './ProductInfo.module.css';
 import toLocale from '../../service/toLocale';
 
@@ -19,15 +19,15 @@ export default function ProductInfo({ product }) {
           className={s.color}
           style={{ backgroundColor: `${product.color}` }}
         ></div>
-
         <span className={s.price}>
-          Price: {toLocale(product.price * amountValue + Number(smthValue))}
+          Price: {toLocale(amountValue * (product.price + smthValue))}
         </span>
         <form>
           <select
+            className={s.select}
             name="toppings"
             id="toppings"
-            onChange={({ target: { value } }) => setSmthValue(value)}
+            onChange={({ target: { value } }) => setSmthValue(Number(value))}
           >
             <option value="0">please select</option>
             <option value="10">smth {toLocale(10)}</option>
@@ -56,7 +56,9 @@ export default function ProductInfo({ product }) {
         <button
           className="button"
           type="button"
-          onClick={() => dispatch(addOrder({ color, price, amount, smth, id }))}
+          onClick={() =>
+            dispatch(addExtendedOrder({ color, price, amount, smth, id }))
+          }
         >
           add to cart
         </button>

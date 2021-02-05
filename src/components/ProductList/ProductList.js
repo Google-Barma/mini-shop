@@ -2,14 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import s from './ProductList.module.css';
 import { loadMore, addOrder } from '../../redux/product/product-action';
-import createItems from '../../service/createItems';
 import localizePrice from '../../service/toLocale';
 import { getProducts } from '../../redux/product/product-selectors';
 
 export default function ProductList() {
   const products = useSelector(getProducts);
   const dispatch = useDispatch();
-  console.log(products);
+
   // const moreProducts = createItems();
 
   // const markup = [];

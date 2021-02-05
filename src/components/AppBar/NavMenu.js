@@ -10,7 +10,11 @@ export default function NavMenu({ authentication, logIn, logOut }) {
   const dispatch = useDispatch();
 
   const total = orders =>
-    orders.reduce((total, order) => total + order.price, 0);
+    orders.reduce(
+      (total, order) =>
+        total + order.amount * (order.price + Number(order.smth)),
+      0,
+    );
 
   const totalPrice = total(orders);
 
