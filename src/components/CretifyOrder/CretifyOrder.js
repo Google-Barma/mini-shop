@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import firebase from 'firebase/app';
 import 'firebase/database';
 import s from './CretifyOrder.module.css';
@@ -6,9 +6,11 @@ import OrderList from '../OrderList/OrdersList';
 import useAuth from '../Hooks/useAuth';
 import { getOrders } from '../../redux/product/product-selectors';
 import TotalBar from '../TotalBar/TotalBar';
+import { clearOrderList } from '../../redux/product/product-action';
 
 export default function CretifyOrder({ onOpenModal }) {
   const orders = useSelector(getOrders);
+  const dispatch = useDispatch();
   const firebaseDatabase = firebase.database();
   const { authentication, logIn } = useAuth(firebase.auth);
 
@@ -23,6 +25,8 @@ export default function CretifyOrder({ onOpenModal }) {
   const confirmOrder = (firebaseDatabase, orders, authentication) => {
     sendOrder(firebaseDatabase, orders, authentication);
 
+    dispatch(clearOrderList());
+
     onOpenModal(true);
   };
 
@@ -33,6 +37,7 @@ export default function CretifyOrder({ onOpenModal }) {
       <button
         className="button"
         type="button"
+        disabled={orders.length < 1 ? true : false}
         onClick={() =>
           authentication
             ? confirmOrder(firebaseDatabase, orders, authentication)

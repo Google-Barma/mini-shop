@@ -17,7 +17,7 @@ export default function Order() {
           type="button"
           className={s.button}
           to="/cretify"
-          onClick={() => isOpenOrder(false)}
+          onClick={() => dispatch(isOpenOrder(false))}
         >
           Go to checkout
         </NavLink>
