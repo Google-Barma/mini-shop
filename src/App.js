@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -27,6 +27,8 @@ function App() {
         <Route path="/" component={HomeView} exact />
         <Route path="/card:id" component={CardView} />
         <Route path="/cretify" component={CretifyView} />
+
+        <Redirect to="/" />
       </Switch>
     </div>
   );
