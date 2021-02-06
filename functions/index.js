@@ -21,7 +21,7 @@ const sendOrderEmail = data => {
     subject: 'Ваши заказ из Mini-Shop',
     html: `
     <div>
-      <h2>Hello, ${data.nameClient}</h2>
+      <h2>Hello, ${data.name}</h2>
       <h3>Your order:</h3>
       <ul>
         ${data.order.map(
