@@ -9,9 +9,11 @@ export default function ProductInfo({ product }) {
   const [amountValue, setAmountValue] = useState(1);
   const [smthValue, setSmthValue] = useState(0);
   const dispatch = useDispatch();
+
   let { color, price, amount, smth, id } = product ? product : [];
   amount = amountValue;
   smth = smthValue;
+  id = smth > 0 ? id + smthValue : id;
 
   if (!product) return <Redirect to="/" />;
 
@@ -39,7 +41,7 @@ export default function ProductInfo({ product }) {
         <button
           type="button"
           onClick={() => setAmountValue(amountValue - 1)}
-          disabled={amountValue <= 1}
+          disabled={amountValue === 1}
         >
           -
         </button>
@@ -59,7 +61,15 @@ export default function ProductInfo({ product }) {
         className="button"
         type="button"
         onClick={() =>
-          dispatch(addExtendedOrder({ color, price, amount, smth, id }))
+          dispatch(
+            addExtendedOrder({
+              color,
+              price,
+              amount,
+              smth,
+              id,
+            }),
+          )
         }
       >
         add to cart

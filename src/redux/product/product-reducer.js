@@ -11,6 +11,7 @@ import createProducts from '../../service/createItems';
 
 const initialState = createProducts();
 
+//убрать из reducer'a
 const productReducer = createReducer(initialState, {
   [loadMore]: (_, { payload }) => createProducts(payload),
 });
@@ -19,9 +20,9 @@ const orderReducer = createReducer([], {
   [addOrder]: (state, { payload }) => {
     if (state.length === 0) return [payload];
 
-    const isInState = state.find(item => item.id === payload.id);
+    const existInState = state.find(item => item.id === payload.id);
 
-    if (isInState) {
+    if (existInState) {
       return state.map(order => {
         if (order.id === payload.id)
           return { ...order, amount: order.amount + payload.amount };
@@ -35,16 +36,14 @@ const orderReducer = createReducer([], {
   [addExtendedOrder]: (state, { payload }) => {
     if (state.length === 0) return [payload];
 
-    const isInState = state.find(item => item.id === payload.id);
+    const existInState = state.find(
+      item => item.id === payload.id && item.smth === payload.smth,
+    );
 
-    if (isInState) {
+    if (existInState) {
       return state.map(order => {
         if (order.id === payload.id)
-          return {
-            ...order,
-            amount: order.amount + payload.amount,
-            smth: payload.smth,
-          };
+          return { ...order, amount: order.amount + payload.amount };
         return order;
       });
     }
